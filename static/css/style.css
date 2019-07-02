@@ -6,6 +6,12 @@
  * Made By MaterializeCSS.com
  */
 
+@font-face {
+    font-family: Windlass;
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://github.com/EGGamer/logviewer/raw/master/WindlassExtended.ttf) format('ttf');
+  }
           
 body {
   background-color: #2F3135;
@@ -55,7 +61,7 @@ nav {
 
 
 #dashbots {
-  font-family: 'Bowlby One SC', cursive;
+  font-family: Windlass;
   color: #7289DA;
   user-select: none;
 }
