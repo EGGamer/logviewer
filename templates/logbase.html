@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width"/>
 
-    <meta content="{{ log_entry.thread_messages | length }} mensajes {% if log_entry.open %}(Open){% else %}(Closed){% endif %}" property="og:site_name">
+    <meta content="{{ log_entry.thread_messages | length }} mensajes {% if log_entry.open %}(Abierto){% else %}(Cerrado){% endif %}" property="og:site_name">
     <meta content="Recipient: {{ log_entry.recipient | string | e }}" property="og:title">
     <meta content='{{ log_entry.recipient.avatar_url }}' property='og:image'>
     <meta content='Created {{ log_entry.human_created_at }}' property='og:image'>
@@ -53,7 +53,7 @@
             </div>
             {% if log_entry.recipient != log_entry.creator %}
             <br>
-                <div class="info__channel-topic tooltip"><span style="color:white">Creador:
+                <div class="info__channel-topic tooltip"><span style="color:white">Autor:
                     <b>{{ log_entry.creator.name | e }}</span></b>#{{ log_entry.creator.discriminator }}
                     <span class='tooltiptext pre pre--inline'>{{ log_entry.creator.id }}</span>
                 </div>
@@ -94,9 +94,9 @@
                     {% elif group.type == 'anonymous' %}
                     <span class='mod-tag'>Anónimo</span>
                     {% elif group.type == 'internal' %}
-                    <span class='internal-tag'>Interno</span>
+                    <span class='internal-tag'>Mensaje interno</span>
                     {% else %}
-                        <span>took a note</span><span class="system-tag">note</span>
+                        <span>escribió una nota</span><span class="system-tag">note</span>
                     {% endif %}
                     <span class="chatlog__timestamp">{{ group.created_at }}</span>
                     {% for message in group.messages %}
@@ -104,7 +104,7 @@
                             <div class="chatlog__content" id="{{ message.id }}">
                                 {{ message.content }}
                                 {% if message.edited %}
-                                <span class="chatlog__edited-timestamp">(edited)</span>
+                                <span class="chatlog__edited-timestamp">(editado)</span>
                                 {% endif %}
                             </div>
 
@@ -115,7 +115,7 @@
                                     {% if attachment.is_image %}
                                     <img class="chatlog__attachment-thumbnail" src="{{ attachment.url }}" alt="attachment"/>
                                     {% else %}
-                                    Attachment: {{ attachment.filename }}
+                                    Adjunto: {{ attachment.filename }}
                                     {% endif %}
                                 </a>
                             </div>
